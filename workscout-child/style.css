@@ -1,0 +1,222 @@
+/*
+Theme Name:   WorkScout Child
+Theme URI: http://workscout.in
+Author: Purethemes
+Author URI: http://themeforest.net/user/purethemes
+Description: WordPress Job Theme
+Version: 1.0
+License: ThemeForest
+License URI: http://themeforest.net/licenses
+Text Domain: workscout
+Domain Path: /languages/
+Tags: light, responsive-layout, post-formats, theme-options, translation-ready, two-columns
+Template:  workscout
+*/
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap");
+@font-face {
+  font-family: "Vanguard CF";
+  src: url("/wp-content/themes/workscout-child/src/fonts/VanguardCF-DemiBold.woff2") format("woff2"), url("/wp-content/themes/workscout-child/src/fonts/VanguardCF-DemiBold.woff") format("woff");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+body {
+  font-family: "Lato", sans-serif;
+}
+
+img {
+  height: auto;
+  max-width: 100%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Vanguard CF", sans-serif;
+  color: #F9DF08;
+  font-weight: 700;
+}
+
+.elementor-heading-title {
+  font-family: "Vanguard CF", sans-serif;
+}
+
+.login-register-buttons .register-btn {
+  transition: all 0.4s ease;
+}
+.login-register-buttons .register-btn:hover {
+  background-color: #ffffff;
+  color: #3C404B;
+}
+
+.page-template-template-jobs-no-map #titlebar.photo-bg:before {
+  display: none;
+}
+.page-template-template-jobs-no-map #titlebar h1 {
+  font-size: 105px;
+  font-family: "Vanguard CF", sans-serif;
+  letter-spacing: -2px;
+  line-height: 99px;
+}
+.page-template-template-jobs-no-map #titlebar #breadcrumbs {
+  display: none;
+}
+.page-template-template-jobs-no-map .search_keywords, .page-template-template-jobs-no-map .job-widget-location, .page-template-template-jobs-no-map .job-widget-categories, .page-template-template-jobs-no-map .widget-salary-filter, .page-template-template-jobs-no-map .widget-rate-filter, .page-template-template-jobs-no-map .widget-tag {
+  display: none;
+}
+
+.section-title {
+  color: #3C404B;
+  font-family: "Vanguard CF", sans-serif;
+  font-size: 65px;
+  line-height: 91px;
+  letter-spacing: -1.3px;
+  margin-bottom: 22px;
+}
+
+.section-paragraph {
+  font-size: 18px;
+  color: #3C404B;
+  font-weight: 300;
+  line-height: 30px;
+  margin-bottom: 30px;
+}
+
+.link-tags {
+  font-weight: 700;
+  color: #3C404B;
+  font-size: 16px;
+  line-height: 30px;
+  letter-spacing: 0;
+  margin-bottom: 12px;
+  margin-left: 6px;
+  margin-right: 6px;
+  display: inline-block;
+  border: 1px solid #3C404B;
+  padding: 12px 27px;
+  text-transform: uppercase;
+  background-color: transparent;
+}
+.link-tags:hover {
+  background-color: #F9DF08;
+  border: 1px solid #F9DF08;
+  color: #3C404B;
+}
+
+.like-h2 {
+  font-weight: 700;
+  color: #3C404B;
+  font-size: 50px;
+  line-height: 55px;
+  letter-spacing: -1px;
+  margin-bottom: 22px;
+}
+
+.like-h3 {
+  font-weight: 700;
+  color: #3C404B;
+  font-size: 24px;
+  line-height: 30px;
+  letter-spacing: -0.48px;
+  margin-bottom: 22px;
+}
+
+.testimonial-text {
+  color: #3C404B;
+  font-size: 40px;
+  line-height: 55px;
+  letter-spacing: -1px;
+  margin-bottom: 22px;
+}
+
+.testimonial-author {
+  color: #3C404B;
+  font-family: "Vanguard CF", sans-serif;
+  font-size: 40px;
+  line-height: 60px;
+  letter-spacing: 0;
+  padding: 0;
+  margin: -20px 0 0;
+}
+
+.pricing-container .elementor-element {
+  margin: 0 6px !important;
+}
+
+.home .banner-headline-alt {
+  max-width: 100%;
+  width: 100%;
+  text-align: center;
+}
+.home .banner-headline-alt h3 strong {
+  font-family: "Vanguard CF", sans-serif;
+  font-size: 150px;
+  line-height: 131px;
+  margin-bottom: 20px;
+}
+
+.new-layout.job_listings > li {
+  margin-bottom: 40px;
+}
+
+.new-layout.job_listings > li a {
+  border: 1px solid #3C404B26 !important;
+}
+
+#footer-new {
+  background-color: #090A0F !important;
+}
+#footer-new .footer-new-bottom-section {
+  border-top: 0;
+  padding: 15px 0 0;
+}
+#footer-new .footer-new-middle-section {
+  padding: 80px 0 100px 0;
+  border-bottom: 1px solid #FFFFFF1A;
+}
+#footer-new .copyright-text {
+  color: #ffffff;
+  font-size: 14px;
+}
+#footer-new .footer-new-bottom-inner {
+  justify-content: center;
+}
+#footer-new .footer-widget {
+  margin-bottom: 0 !important;
+}
+#footer-new .footer-new-top-section {
+  display: none !important;
+}
+
+#menu-global-footer-menu {
+  display: flex;
+}
+
+#footer-new .footer-row {
+  align-items: center;
+}
+#footer-new .footer-row .footer-widget.widget_nav_menu li a {
+  font-size: 16px;
+  color: #ffffff;
+  margin: 0 14px;
+}
+#footer-new .footer-row .new-footer-social-icons {
+  text-align: right;
+}
+#footer-new .footer-row .new-footer-social-icons li {
+  margin-left: 14px;
+}
+#footer-new .footer-row .new-footer-social-icons li a {
+  opacity: 1;
+}
+#footer-new .footer-row .new-footer-social-icons li a:hover {
+  opacity: 0.35;
+}
+#footer-new .footer-row .wp-block-image {
+  margin-bottom: 0;
+}
+
+.footer-widget.widget_block.widget_media_image {
+  max-width: 182px;
+  margin: 0 auto;
+}
+
+/*# sourceMappingURL=style.css.map */

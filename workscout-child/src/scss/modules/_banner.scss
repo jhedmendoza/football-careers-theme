@@ -1,0 +1,16 @@
+.home {
+    .banner-headline-alt {
+        max-width: 100%;
+        width: 100%;
+        text-align: center;
+    }
+    
+    .banner-headline-alt h3 {
+        strong {
+            font-family: $font-heading;
+            font-size: 150px;
+            line-height: 131px;
+            margin-bottom: 20px;
+        }
+    }
+}

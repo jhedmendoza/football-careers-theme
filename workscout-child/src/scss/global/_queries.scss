@@ -1,0 +1,74 @@
+//
+// Media queries
+//
+
+$xxs              : "480px";
+$xs-min           : "481px";
+$xs               : "575px";
+$sm-min           : "576px";
+$sm               : "767px";
+$md-min           : "768px";
+$md               : "991px";
+$lg-min           : "992px";
+$lg               : "1199px";
+$xl-min           : "1200px";
+$tablet-landscape : "1024px";
+$desktop-min      : "1025px";
+
+
+
+@mixin screen1399 {
+    @media screen and (max-width: 1399px) {
+        @content;
+    }
+}
+
+@mixin screen1280 {
+    @media screen and (max-width: 1280px) {
+        @content;
+    }
+}
+
+@mixin screen1199 {
+    @media screen and (max-width: 1199px) {
+        @content;
+    }
+}
+
+@mixin screen1060 {
+    @media screen and (max-width: 1060px) {
+        @content;
+    }
+} 
+
+@mixin screen1024 {
+    @media screen and (max-width: 1060px) {
+        @content;
+    }
+} 
+ 
+
+@mixin screen991 {
+    @media screen and (max-width: 991px) {
+        @content;
+    }
+} 
+
+@mixin screen800 {
+    @media screen and (max-width: 800px) {
+        @content;
+    }
+}
+
+
+@mixin screen768 {
+    @media screen and (max-width: 768px) {
+        @content;
+    }
+}
+
+@mixin screen767 {
+    @media screen and (max-width: 767px) {
+        @content;
+    }
+}

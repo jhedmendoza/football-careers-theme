@@ -1,0 +1,23 @@
+body {
+    font-family: $font-primary;
+}
+
+img {
+    height: auto;
+    max-width: 100%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: $color-primary;
+    font-weight: 700;
+}
+
+.login-register-buttons  {
+    .register-btn {
+        transition: all .4s ease;
+        &:hover {
+            background-color: $color-white;
+            color: $color-dark;
+        }
+    }
+}
