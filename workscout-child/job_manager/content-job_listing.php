@@ -1,6 +1,7 @@
 <?php global $post;
 
- $company_id = get_post_meta($post->ID, '_company_id', true);
+$company_id = get_post_meta($post->ID, '_company_id', true);
+$salary_per_year = get_post_meta( $post->ID, '_salary_max', true );
 if(!empty($company_id) && get_post_status ( $company_id )){
 	$logo_id = (int)$company_id;
 } else {
@@ -10,10 +11,12 @@ if(!empty($company_id) && get_post_status ( $company_id )){
 $position = Kirki::get_option( 'workscout','pp_job_list_logo_position', 'left' );
 $layout = Kirki::get_option( 'workscout','pp_jobs_old_layout', false );
 
+
 if(isset($_POST['list_layout'])) {
 	$list_layout = $_POST['list_layout'];
 }
 $types_below = Kirki::get_option( 'workscout','pp_job_tags_below_title', false );
+
 //$list_layout = Kirki::get_option( 'workscout','jobs_listings_list_layout', 'list' );
 $_color_job_type = Kirki::get_option( 'workscout','pp_maps_marker_color_job_type', false );
 if ( get_option( 'job_manager_enable_types' ) ) {
@@ -151,21 +154,16 @@ data-job_type_class="<?php if(isset($single_type_slug)) echo esc_attr($single_ty
 		</div>
 		<div class="listing-title">
 			<h4><?php the_title(); ?></h4>
-      <div class="save-jobs">
+      <p class="company-name">
+        <?php echo the_company_name();?>
+      </p>
+      <div class="save-jobs" style="width: 120px">
         <?php get_template_part('template-parts/save','jobs'); ?>
       </div>
 			<ul class="listing-icons">
 				<?php do_action( 'workscout_job_listing_meta_start' ); ?>
 
 				<?php $job_meta = Kirki::get_option( 'workscout','pp_meta_job_list',array('company','location','rate','salary') ); ?>
-				<?php if (in_array("company", $job_meta) && get_the_company_name()) { ?>
-					<li><i class="ln ln-icon-Management"></i> <?php the_company_name();?></li>
-				<?php } ?>
-
-				<?php if (in_array("location", $job_meta)) { ?>
-					<li><i class="ln ln-icon-Map2"></i> <?php ws_job_location( false ); ?></li>
-				<?php } ?>
-
 				<?php
 				if (in_array("date", $job_meta)) {
 					if(workscout_newly_posted()) {
@@ -200,12 +198,20 @@ data-job_type_class="<?php if(isset($single_type_slug)) echo esc_attr($single_ty
 			if(!$show_excerpt) : ?>
 				<div class="listing-desc"><?php the_excerpt(); ?></div>
 			<?php endif; ?>
-		<div class="listing-types-list"><?php echo ws_get_job_types($post); ?></div>
+		<div class="listing-types-list">
+      <?php echo ws_get_job_types($post); ?>
+      <?php echo get_job_tags($post); ?>
+    </div>
     <div class="listing-footer">
-      <div class="salary">
-        <?php echo ws_get_job_rate($post); ?>
-        <?php echo ws_get_job_salary($post); ?>
+      <?php if ( isset($salary_per_year) && !empty($salary_per_year) ): ?>
+      <div class="salary-wrapper">
+        <p><i class="ln ln-icon-Money-2"></i>
+          <span class="currency">£</span>
+          <span class="salary"><?php echo thousandsCurrencyFormat($salary_per_year) ?></span>
+          <span>/Per year</span>
+        </p>
       </div>
+      <?php endif; ?>
       <a class="btn-apply" href="<?php the_job_permalink(); ?>">Apply for this Job</a>
     </div>
 	</section>
