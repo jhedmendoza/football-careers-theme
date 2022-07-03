@@ -1,4 +1,23 @@
 <?php
+
+function initialize() {
+  $shortcodes_path = get_template_directory().'-child'. '/shortcodes';
+  require_once $shortcodes_path . '/shortcodes.php';
+}
+add_action( 'init', 'initialize' );
+
+function fc_enqueue_script() {
+	$version_script = '1';
+	wp_enqueue_script('custom-script', get_template_directory_uri().'-child'. '/src/js/custom.js', ['jquery'], $version_script, true);
+  wp_localize_script('custom-script', 'fc',
+    array(
+        'site_url' => site_url(),
+    )
+  );
+}
+
+add_action('wp_enqueue_scripts', 'fc_enqueue_script');
+
 add_action( 'wp_enqueue_scripts', 'workscout_enqueue_styles' );
 function workscout_enqueue_styles() {
     wp_enqueue_style( 'parent-style', get_template_directory_uri() . '/style.css',array('workscout-base','workscout-responsive','workscout-font-awesome') );
@@ -25,8 +44,6 @@ function get_job_tags($post){
   $result = ob_get_clean();
   return $result;
 }
-
-
 
 function thousandsCurrencyFormat($num) {
 
