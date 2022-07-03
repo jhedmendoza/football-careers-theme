@@ -8,6 +8,8 @@ add_action( 'init', 'initialize' );
 
 function fc_enqueue_script() {
 	$version_script = '1';
+
+	wp_enqueue_script('login-script', get_template_directory_uri().'-child'. '/src/js/fc-login.js', ['jquery'], $version_script, true);
 	wp_enqueue_script('custom-script', get_template_directory_uri().'-child'. '/src/js/custom.js', ['jquery'], $version_script, true);
   wp_localize_script('custom-script', 'fc',
     array(

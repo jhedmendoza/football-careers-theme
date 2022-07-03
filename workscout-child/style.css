@@ -220,3 +220,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /*# sourceMappingURL=style.css.map */
+
+.btn-login {
+  padding: 10px;
+  background-color: #26ae61;
+  color: #ffffff;
+}
+
+.password-wrap {margin-bottom:20px}
