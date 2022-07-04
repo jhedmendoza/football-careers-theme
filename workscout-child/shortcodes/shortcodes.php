@@ -13,3 +13,17 @@ function shortcode_fc_login_form() {
 	return ob_get_clean();
 }
 add_shortcode('fc_login_form', 'shortcode_fc_login_form');
+
+
+function shortcode_fc_latest_news($attr) {
+	ob_start();
+	$params = [
+		'numberposts' => $attr['limit'],
+		'post_status' => 'publish'
+	];
+
+	$latest_post = wp_get_recent_posts($params);
+  get_template_part('template-parts/latest','news', ['data' => $latest_post]);
+	return ob_get_clean();
+}
+add_shortcode('fc_latest_news', 'shortcode_fc_latest_news');
