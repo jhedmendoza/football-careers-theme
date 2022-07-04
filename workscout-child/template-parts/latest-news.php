@@ -1,11 +1,7 @@
-<?php
-$latest_news = isset($args['data']) ? $args['data'] : '';
-?>
-
 <div class="wrapper">
   <div class="latest-news">
-    <?php if (count($latest_news) > 0): ?>
-      <?php foreach ($latest_news as $post): ?>
+    <?php if (count($args['latest_news']) > 0): ?>
+      <?php foreach ($args['latest_news'] as $post): ?>
         <?php
           $background_url = wp_get_attachment_url( get_post_thumbnail_id($post['ID']), 'thumbnail' );
           $excerpt = strlen($post['post_content']) > 50 ? substr($post['post_content'], 0, 100)."..." : $post['post_content'];
@@ -17,8 +13,10 @@ $latest_news = isset($args['data']) ? $args['data'] : '';
           </div>
           <h5><?php echo $post['post_title'] ?></h5>
           <p><?php echo $excerpt ?></p>
+          <a href="<?php echo get_permalink($post['ID']) ?>">View More</a>
         </div>
       <?php endforeach; ?>
     <?php endif; ?>
   </div>
+
 </div>

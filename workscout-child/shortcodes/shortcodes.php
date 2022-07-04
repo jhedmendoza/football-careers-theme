@@ -23,7 +23,7 @@ function shortcode_fc_latest_news($attr) {
 	];
 
 	$latest_post = wp_get_recent_posts($params);
-  get_template_part('template-parts/latest','news', ['data' => $latest_post]);
+  get_template_part('template-parts/latest','news', ['latest_news' => $latest_post]);
 	return ob_get_clean();
 }
 add_shortcode('fc_latest_news', 'shortcode_fc_latest_news');
