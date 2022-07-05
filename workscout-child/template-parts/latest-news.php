@@ -19,6 +19,7 @@ $latest_news = new WP_Query( $args['params'] );
         <h5><?php the_title() ?></h5>
         <p><?php echo $excerpt; ?></p>
         <a href="<?php echo get_permalink( get_the_ID() ) ?>">View More</a>
+      </div>
     <?php
     endwhile;
     wp_reset_postdata();
