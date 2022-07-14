@@ -17,19 +17,26 @@ function fc_enqueue_script() {
     )
   );
 }
-
 add_action('wp_enqueue_scripts', 'fc_enqueue_script');
 
-add_action( 'wp_enqueue_scripts', 'workscout_enqueue_styles' );
+
 function workscout_enqueue_styles() {
     wp_enqueue_style( 'parent-style', get_template_directory_uri() . '/style.css',array('workscout-base','workscout-responsive','workscout-font-awesome') );
 }
+add_action( 'wp_enqueue_scripts', 'workscout_enqueue_styles' );
 
-
-function remove_parent_theme_features() {
-
-}
+function remove_parent_theme_features() {}
 add_action( 'after_setup_theme', 'remove_parent_theme_features', 10 );
+
+
+function custom_submit_job_form_fields( $fields ) {
+  $job_fields = include get_template_directory().'-child/job_manager/configs/job_form_fields.php';
+  return $job_fields;
+}
+add_filter( 'submit_job_form_fields', 'custom_submit_job_form_fields' );
+
+
+/* Utility Functions */
 
 function get_job_tags($post){
   ob_start();
@@ -62,5 +69,7 @@ function thousandsCurrencyFormat($num) {
   }
   return $num;
 }
+
+
 
 ?>
