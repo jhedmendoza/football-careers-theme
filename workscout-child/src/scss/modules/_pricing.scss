@@ -1,0 +1,294 @@
+// 
+// Pricing / Packages
+//
+.pricing-container {
+
+	> .elementor-container {
+		padding-left: 18px;
+		padding-right: 18px;
+		max-width: 100% !important;
+		width: 1440px;
+
+	}
+	.pricing {
+		margin: 0 10px 20px !important;
+
+		@include screen1024 {
+			width: calc( 50% - 20px ) !important;
+		}
+		@include screen768 {
+			width: calc( 100% - 20px ) !important;
+		}
+
+		> .elementor-widget-wrap {
+			background-color: $color-white;
+			color: $color-dark;
+		}
+
+		> .elementor-element {
+			margin-right: 0 !important;
+			margin-left: 0 !important;
+		}
+
+		// subheading
+		.title-heading {
+			p {
+				color: $color-dark;
+				font-size: 20px;
+				line-height: 24px;
+				font-weight: 700;
+				font-family: $font-primary;
+				letter-spacing: -0.4px;
+				min-height: 48px;
+			}
+
+			// heading
+			+ .elementor-section {
+				margin-bottom: 30px !important;
+
+				.elementor-column {
+					margin-right: 0 !important;
+					margin-left: 0 !important;
+					width: auto !important;
+
+					&:first-child {
+						flex-shrink: 1;
+						margin-right: 5px !important;
+
+						+ .elementor-column {
+							flex-grow: 1;
+						}
+					}
+				}
+
+				.elementor-widget-wrap {
+					padding: 0 !important;
+				}
+
+				.elementor-widget-heading {
+					margin-right: 0 !important;
+					margin-left: 0 !important;
+				}
+				.elementor-widget-text-editor {
+					margin-right: 0 !important;
+
+					p {
+						font-size: 18px;
+						line-height: 22px;
+						margin-bottom: 0;
+						letter-spacing: -0.36px;
+						color: $color-gray2;
+						font-family: $font-primary;
+					}
+				}
+			}
+		}
+
+
+		// icon list
+		.elementor-widget-icon-list {
+
+			.elementor-icon-list-items {
+				margin-bottom: 30px;
+			}
+
+			.elementor-icon-list-icon {
+				position: relative;
+				top: 5px;
+			}
+		}
+
+		// elemntor btn
+		.elementor-button-link {
+			padding-top: 6px;
+			padding-bottom: 6px;
+			margin-bottom: 10px !important;
+		}
+
+
+		// hover
+		&:hover {
+			> .elementor-widget-wrap {
+				background-color: $color-dark;
+				color: $color-white;
+			}
+
+
+			.title-heading {
+				p {
+					color: $color-white;
+				}
+			}
+
+			* {
+				color: $color-white !important;
+			}
+
+
+			// icon list
+			.elementor-widget-icon-list {
+
+				.elementor-icon-list-icon,
+				.elementor-icon-list-icon i {
+					color: $color-primary !important;
+				}
+			}
+
+			// elemntor btn
+			.elementor-button-link {
+				background-color: $color-secondary !important;
+				border-color: $color-secondary;
+			}
+		}
+	}
+}
+
+
+//
+// Steps
+//
+.steps-icon-list {
+
+	.elementor-icon-list-items.elementor-inline-items {
+		@include screen767 {
+			flex-wrap: nowrap;
+		}
+
+	}
+
+	.elementor-icon-list-item.elementor-inline-item {
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		margin-right: 40px !important;
+		margin-left: 40px !important;
+		width: 200px;
+
+		@include screen992 {
+			margin-right: 20px !important;
+			margin-left: 20px !important;
+		}
+
+		@include screen767 {
+			width: 120px;
+			margin-right: 0 !important;
+			margin-left: 0 !important;
+		}
+
+		@include screen380 {
+			width: 100px;
+		}
+
+		.elementor-icon-list-icon {
+			position: relative;
+
+			@include screen767 {
+				width: 80px;
+			}
+			@include screen380 {
+				width: 70px;
+			}
+
+			&::before,
+			&::after {
+				content: "";
+				height: 2px;
+				width: 140px;
+				background-color: $color-gray2;
+
+				position: absolute;
+				z-index: 1;
+				top: calc( 50% - 1px );
+
+				@include screen992 {
+					width: 120px;
+				}
+				@include screen767 {
+					width: 60px;
+				}
+				@include screen380 {
+					width: 50px;
+				}
+			}
+
+			&::before {
+				right: 50%;
+			}
+			&::after {
+				left: 50%;
+			}
+
+			svg {
+				position: relative;
+				z-index: 2;
+			}
+
+		}
+
+		.elementor-icon-list-text {
+			padding-right: 5px;
+			padding-top: 10px;
+
+			@include screen767 {
+				display: none;
+			}
+		}
+
+		&:first-child {
+			.elementor-icon-list-icon {
+				&::before {
+					display: none;
+				}
+				&::after {
+					background-color: $color-primary;
+				}
+			}
+
+		}
+		&:last-child {
+			.elementor-icon-list-icon {
+				&::after {
+					display: none;
+				}
+			}
+		}
+	}
+
+	// 2nd item active
+	&.active-2 {
+
+		.elementor-icon-list-item.elementor-inline-item {
+			.elementor-icon-list-icon {
+
+				&::before,
+				&::after {
+					background-color: $color-primary;;
+				}
+			}
+
+			&:last-child {
+				.elementor-icon-list-icon {
+					&::before {
+						background-color: $color-gray2;
+					}
+				}
+			}
+
+		}
+	}
+
+	// 3rd item active
+	&.active-3 {
+
+		.elementor-icon-list-item.elementor-inline-item {
+			.elementor-icon-list-icon {
+
+				&::before,
+				&::after {
+					background-color: $color-primary;;
+				}
+			}
+
+		}
+	}
+}

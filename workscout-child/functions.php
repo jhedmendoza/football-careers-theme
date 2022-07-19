@@ -30,6 +30,14 @@ add_action( 'after_setup_theme', 'remove_parent_theme_features', 10 );
 
 
 function custom_submit_job_form_fields( $fields ) {
+  //Remove unnecessary fields
+  unset($fields['job']['rate_min']);
+  unset($fields['job']['rate_max']);
+  unset($fields['job']['salary_min']);
+
+  //rename fields based on the design
+  $fields['job']['salary_max']['label'] = "Salary (£) / yr";
+
   $job_fields = include get_template_directory().'-child/job_manager/configs/job_form_fields.php';
   return $job_fields;
 }
@@ -60,7 +68,7 @@ function thousandsCurrencyFormat($num) {
         $x = round($num);
         $x_number_format = number_format($x);
         $x_array = explode(',', $x_number_format);
-        $x_parts = array('k', 'm', 'b', 't');
+        $x_parts = array('K', 'M', 'B', 'T');
         $x_count_parts = count($x_array) - 1;
         $x_display = $x;
         $x_display = $x_array[0] . ((int) $x_array[1][0] !== 0 ? '.' . $x_array[1][0] : '');

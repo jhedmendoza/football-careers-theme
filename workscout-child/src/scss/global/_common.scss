@@ -1,5 +1,6 @@
 body {
     font-family: $font-primary;
+    color: $color-dark;
 }
 
 img {
@@ -12,6 +13,23 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 700;
 }
 
+p {
+    font-weight: 300;
+}
+
+blockquote {
+    border-left: 3px solid $color-primary;
+    padding-left: 25px;
+
+    p {
+        font-weight: 400;
+    }
+}
+
+.elementor-heading-title {
+  font-family: "Vanguard CF", sans-serif;
+}
+
 .login-register-buttons  {
     .register-btn {
         transition: all .4s ease;
@@ -20,4 +38,94 @@ h1, h2, h3, h4, h5, h6 {
             color: $color-dark;
         }
     }
+}
+
+.page-template-template-jobs-no-map #titlebar.photo-bg:before {
+  display: none;
+}
+.page-template-template-jobs-no-map #titlebar h1 {
+  font-size: 105px;
+  font-family: "Vanguard CF", sans-serif;
+  letter-spacing: -2px;
+  line-height: 99px;
+}
+.page-template-template-jobs-no-map #titlebar #breadcrumbs {
+  display: none;
+}
+.page-template-template-jobs-no-map .search_keywords, .page-template-template-jobs-no-map .job-widget-location, .page-template-template-jobs-no-map .job-widget-categories, .page-template-template-jobs-no-map .widget-salary-filter, .page-template-template-jobs-no-map .widget-rate-filter, .page-template-template-jobs-no-map .widget-tag {
+  display: none;
+}
+
+.section-title {
+  color: #3C404B;
+  font-family: "Vanguard CF", sans-serif;
+  font-size: 65px;
+  line-height: 91px;
+  letter-spacing: -1.3px;
+  margin-bottom: 22px;
+}
+
+.section-paragraph {
+  font-size: 18px;
+  color: #3C404B;
+  font-weight: 300;
+  line-height: 30px;
+  margin-bottom: 30px;
+}
+
+.link-tags {
+  font-weight: 700;
+  color: #3C404B;
+  font-size: 16px;
+  line-height: 30px;
+  letter-spacing: 0;
+  margin-bottom: 12px;
+  margin-left: 6px;
+  margin-right: 6px;
+  display: inline-block;
+  border: 1px solid #3C404B;
+  padding: 12px 27px;
+  text-transform: uppercase;
+  background-color: transparent;
+}
+.link-tags:hover {
+  background-color: #F9DF08;
+  border: 1px solid #F9DF08;
+  color: #3C404B;
+}
+
+.like-h2 {
+  font-weight: 700;
+  color: #3C404B;
+  font-size: 50px;
+  line-height: 55px;
+  letter-spacing: -1px;
+  margin-bottom: 22px;
+}
+
+.like-h3 {
+  font-weight: 700;
+  color: #3C404B;
+  font-size: 24px;
+  line-height: 30px;
+  letter-spacing: -0.48px;
+  margin-bottom: 22px;
+}
+
+.testimonial-text {
+  color: #3C404B;
+  font-size: 40px;
+  line-height: 55px;
+  letter-spacing: -1px;
+  margin-bottom: 22px;
+}
+
+.testimonial-author {
+  color: #3C404B;
+  font-family: "Vanguard CF", sans-serif;
+  font-size: 40px;
+  line-height: 60px;
+  letter-spacing: 0;
+  padding: 0;
+  margin: -20px 0 0;
 }

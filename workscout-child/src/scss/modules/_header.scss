@@ -1,0 +1,212 @@
+.new-header {
+	.transparent-header {
+		#header {
+			border-bottom: none !important;
+		}
+
+		#navigation > ul > .menu-item {
+
+			> a {
+				&:hover {
+					color: #fff;
+				}
+			}
+
+			&:hover {
+				> a {
+					color: #fff;
+				}
+			}
+		}
+	}
+
+	#header {
+		// admin loggedin
+		html body.admin-bar & {
+			@include screen1099 {
+				top: 0 !important;
+			}
+		}
+		
+
+		// hamburger button
+		.hamburger .hamburger-inner {
+			bottom: auto;
+			top: 50%;
+		}
+	}
+
+	// navigation
+	#navigation {
+		> ul {
+
+			> .menu-item {
+				> a {
+					font-weight: 300;
+					position: relative;
+					padding-left: 0;
+					padding-right: 0;
+					margin-left: 11px;
+					margin-right: 11px;
+					font-family: $font-primary;
+
+					&::after {
+						display: none;
+					}
+
+					&::before {
+						content: '';
+						position: absolute;
+						width: 100%;
+						transform: scaleX(0);
+						height: 2px;
+						bottom: 0;
+						left: 0;
+						background-color: $color-primary;
+						transform-origin: bottom right;
+						transition: transform 0.25s ease-out;
+					}
+
+					&:hover {
+						color: $color-dark;
+
+						.transparent-header & {
+							color: #fff;
+						}
+
+						&::before {
+							transform: scaleX(1);
+							transform-origin: bottom left;
+						}
+					}
+				}
+
+				&.current-menu-item {
+					> a {
+						&::before {
+							transform: scaleX(1);
+						}
+					}
+				}
+
+				&:hover {
+					> ul {
+						transform: translateX(-50%);
+
+						> li {
+							> a {
+								padding: 4px 0 !important;
+							}
+						}
+					}
+				}
+
+				// submenu
+				> ul {
+					left: 50%;
+					border-radius: 0;
+
+					&::after {
+						left: calc( 50% - 10px );
+					}
+
+					> li {
+						width: 210px;
+						text-align: center;
+
+						> a {
+							padding: 4px 0 !important;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+.login-register-buttons {
+	a.login-btn,
+	a.register-btn {
+		@include screen1366 {
+			display: inline-block;
+		}
+		@include screen480 {
+			display: block;
+		}
+	}
+	.login-btn {
+		position: relative;
+		font-family: $font-primary;
+
+		@include screen1366 {
+			margin-right: 6px !important;
+		}
+		@include screen480 {
+			margin-right: 0 !important;
+			margin-bottom: 8px !important;
+			display: inline-block !important;
+		}
+
+		.transparent-header & {
+			&:hover {
+				color: #fff;
+			}
+		}
+
+		&::after {
+			content: '';
+			position: absolute;
+			width: 100%;
+			transform: scaleX(0);
+			height: 2px;
+			bottom: 0;
+			left: 0;
+			background-color: $color-primary;
+			transform-origin: bottom right;
+			transition: transform 0.25s ease-out;
+		}
+
+		&:hover {
+			color: $color-dark;
+
+			&::after {
+				transform: scaleX(1);
+				transform-origin: bottom left;
+			}
+		}
+	}
+
+	.register-btn {
+		color: $color-dark;
+		padding-top: 12px;
+		padding-bottom: 12px;
+		font-family: $font-primary;
+
+		&:hover {
+			color: $color-dark;
+		}
+
+		@include screen767 {
+			padding: 6px 15px;
+		}
+
+		@include screen480 {
+			padding: 4px 12px;
+		}
+
+		.transparent-header & {
+			color: $color-dark;
+
+			&:hover {
+				color: $color-dark;
+			}
+		}
+	}
+}
+
+.header-notifications {
+	
+	.header-notifications-dropdown {
+		border-radius: 0;
+	}
+}

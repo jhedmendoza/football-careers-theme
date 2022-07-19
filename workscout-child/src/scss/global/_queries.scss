@@ -22,7 +22,17 @@ $desktop-min      : "1025px";
         @content;
     }
 }
+@mixin screen1366 {
+    @media screen and (max-width: 1366px) {
+        @content;
+    }
+}
 
+@mixin minscreen1281 {
+    @media screen and (min-width: 1281px) {
+        @content;
+    }
+}
 @mixin screen1280 {
     @media screen and (max-width: 1280px) {
         @content;
@@ -35,6 +45,12 @@ $desktop-min      : "1025px";
     }
 }
 
+@mixin screen1099 {
+    @media screen and (max-width: 1099px) {
+        @content;
+    }
+} 
+
 @mixin screen1060 {
     @media screen and (max-width: 1060px) {
         @content;
@@ -42,10 +58,22 @@ $desktop-min      : "1025px";
 } 
 
 @mixin screen1024 {
-    @media screen and (max-width: 1060px) {
+    @media screen and (max-width: 1024px) {
         @content;
     }
 } 
+ 
+
+@mixin minscreen993 {
+    @media screen and (min-width: 993px) {
+        @content;
+    }
+}
+@mixin screen992 {
+    @media screen and (max-width: 992px) {
+        @content;
+    }
+}
  
 
 @mixin screen991 {
@@ -69,6 +97,16 @@ $desktop-min      : "1025px";
 
 @mixin screen767 {
     @media screen and (max-width: 767px) {
+        @content;
+    }
+}
+@mixin screen480 {
+    @media screen and (max-width: 480px) {
+        @content;
+    }
+}
+@mixin screen380 {
+    @media screen and (max-width: 380px) {
         @content;
     }
 }

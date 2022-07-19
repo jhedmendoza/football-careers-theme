@@ -5,3 +5,221 @@
 .new-layout.job_listings > li a {
     border: 1px solid #3C404B26 !important;
 }
+
+
+// featured jobs
+.featured-jobs {
+    .job_listings {
+        .job-list > li {
+            background: none !important;
+            margin-bottom: 45px;
+            overflow: hidden;
+
+
+            .job_listing {
+                background: none;
+                padding: 0;
+                border: none;
+
+                @include flexbox;
+                justify-content: space-between;
+                align-items: center;
+
+
+                &.job_position_featured {
+                    background: none;
+                }
+
+                .listing-logo {
+                    flex-shrink: 0;
+                    width: 33.3333%;
+                    margin: 0 20px 0 0;
+
+                    .company_logo {
+                        width: 100%;
+                        height: auto;
+                        padding: 0;
+                        margin: 0 20px 0 0;
+
+                        @include screen480 {
+                            display: block !important;
+                        }
+                    }
+                }
+
+                .listing-details {
+                    flex-grow: 1;
+                }
+
+                .listing-title {
+                    padding-left: 0;
+                    padding-right: 0;
+                    // margin-bottom: 12px;
+
+                    h4 {
+                        font-size: 28px;
+                        line-height: 38px;
+                        font-family: $font-primary;
+                        font-weight: 700;
+                        letter-spacing: -0.56px;
+                        color: $color-dark;
+                        margin: 0 0 5px;
+                    }
+                    .company-name,
+                    .address {
+                        font-size: 18px;
+                        line-height: 28px;
+                        font-family: $font-primary;
+                        font-weight: 300;
+                        color: $color-dark;
+                        margin-bottom: 25px;
+                        display: block;
+                    }
+
+
+                    .save-jobs, .listing-icons {
+                        display: none;
+                    }
+                }
+                .listing-types-list {
+                    display: none;
+                }
+
+                .listing-footer {
+
+                    .salary-wrapper {
+                        display: none;
+                    }
+
+                    .btn-apply {
+                        border: none !important;
+
+                        font-size: 18px;
+                        line-height: 22px;
+                        font-weight: 700;
+                        font-family: $font-primary;
+                        color: $color-dark !important;
+                        letter-spacing: -0.36px;
+
+                        padding: 0 25px 1px 0 !important;
+                        background: url('src/img/arrow-right-rotate.svg') no-repeat center right;
+                        background-size: 16px auto;
+                        display: inline-block;
+                        width: auto;
+                        border-radius: 0;
+
+                        position: relative;
+                        width: auto !important;
+                        float: none;
+
+                        &::before {
+                            content: '';
+                            display: block;
+                            position: absolute;
+                            z-index: 1;
+                            width: 100%;
+                            height: 2px;
+                            bottom: 0;
+                            left: 0;
+                            background-color: $color-dark;
+                            box-shadow: none !important;
+                            opacity: 1 !important;
+                            top: auto;
+                        }
+                        &::after {
+                            content: '';
+                            display: block;
+                            position: absolute;
+                            z-index: 2;
+                            width: 100%;
+                            transform: scaleX(0);
+                            height: 2px;
+                            bottom: 0;
+                            left: 0;
+                            background-color: $color-primary;
+                            transform-origin: bottom right;
+                            transition: transform 0.25s ease-out;
+                        }
+
+                        &:hover {
+
+                            &::after {
+                                transform: scaleX(1);
+                                transform-origin: bottom left;
+                            }
+                        }
+                    }
+                }
+
+            }
+        }
+
+        .link_more_jobs {
+            background: none;
+            border: none;
+            margin: 0;
+
+            font-size: 18px;
+            line-height: 22px;
+            font-weight: 700;
+            font-family: $font-primary;
+            color: $color-dark;
+            letter-spacing: -0.36px;
+
+            padding: 0 25px 1px 0;
+            background: url('src/img/arrow-right.svg') no-repeat center right;
+            background-size: 16px auto;
+            display: inline-block;
+            width: auto;
+            border-radius: 0;
+
+            &::before {
+                content: '';
+                display: block;
+                position: absolute;
+                z-index: 1;
+                width: 100%;
+                height: 2px;
+                bottom: 0;
+                left: 0;
+                background-color: $color-dark;
+                box-shadow: none !important;
+                opacity: 1 !important;
+                top: auto;
+            }
+            &::after {
+                content: '';
+                display: block;
+                position: absolute;
+                z-index: 2;
+                width: 100%;
+                transform: scaleX(0);
+                height: 2px;
+                bottom: 0;
+                left: 0;
+                background-color: $color-primary;
+                transform-origin: bottom right;
+                transition: transform 0.25s ease-out;
+            }
+
+            &:hover {
+                background-color: transparent !important;
+                color: $color-dark;
+
+                &::after {
+                    transform: scaleX(1);
+                    transform-origin: bottom left;
+                }
+            }
+
+            .fa.fa-plus-circle {
+                display: none;
+            }
+
+            &.centered {
+                display: inline-block;
+                margin: 0;
+            }
+        }
+    }
+}

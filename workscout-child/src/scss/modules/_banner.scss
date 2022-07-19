@@ -11,6 +11,155 @@
             font-size: 150px;
             line-height: 131px;
             margin-bottom: 20px;
+
+            @include screen1060 {
+                font-size: 120px;
+                line-height: 1;;
+            }
+        }
+    }
+
+    .intro-banner {
+        @include screen1199 {
+            padding-left: 50px !important;
+            padding-right: 50px !important;
+        }
+        @include screen1060 {
+            padding-left: 30px !important;
+            padding-right: 30px !important;
+        }
+
+        > .container {
+
+            @include screen1060 {
+                width: 100% !important;
+            }
+
+            > .row {
+                > .column,
+                > .columns.sixteen {
+
+                    @include screen1060 {
+                        width: 100% !important;
+                        margin-left: 0 !important;
+                        margin-right: 0 !important;
+                    }
+
+                }
+            }
+        }
+
+    }
+
+    .workscout_main_search_form {
+        margin-top: 70px;
+        position: relative;
+
+        @include screen992 {
+            margin-top: 40px;
+        }
+
+        > .row > .columns.sixteen {
+            margin-left: 0;
+            margin-right: 0;
+
+
+            @include screen1060 {
+                width: 100% !important;
+            }
+        }
+
+        .intro-banner-search-form {
+
+            background-color: $color-dark;
+            position: absolute;
+            top: 25px;
+            z-index: 3;
+            width: 100%;
+            padding: 70px 52px 52px;
+
+            margin-top: 0;
+            box-shadow: none !important;
+            border-radius: 0;
+
+            @include screen992 {
+                position: relative;
+                top: 0;
+                padding-top: 15px;
+
+            }
+
+            .intro-search-field {
+                margin-right: 12px;
+                margin-left: 12px;
+                box-shadow: 0 3px 12px rgba(0,0,0,0.2);
+                background-color: #fff;
+                border-radius: 3px;
+                border-right: none;
+                padding: 0;
+
+                .field-title {
+                    background: none;
+                    border: none;
+                    padding: 0;
+                    font: normal normal bold 23px/27px 'Lato', 'sans-serif';
+                    letter-spacing: -0.45px;
+                    margin-top: 0;
+                }
+
+                .input-with-icon {
+                    input {
+                        padding-right: 0;
+                        padding-left: 32px;
+                    }
+                    .tooltip {
+                        right: auto;
+                        left: 10px;
+                    }
+                }
+
+            }
+
+            .intro-search-button {
+                margin-top: 0;
+                margin-bottom: 0;
+
+                @include screen992 {
+                    margin-right: 12px;
+                    margin-left: 12px;
+                    margin-top: 30px;
+                }
+
+                .button {
+                    border-radius: 0;
+                    background-color: $color-primary;
+                    height: 50px;
+                    color: $color-dark;
+
+                    @include minscreen993 {
+                        width: 70px;
+                        text-indent: -999px;
+                        overflow: hidden;
+
+                        position: relative;
+                        padding: 0;
+
+
+                        i {
+                            text-indent: 0;
+                            transform: none;
+                            opacity: 1;
+                            font-size: 20px;
+                            color: $color-dark;
+
+                        }
+                    }
+
+                    @include screen992 {
+                        width: 100%;
+                    }
+                }
+            }
         }
     }
 }
