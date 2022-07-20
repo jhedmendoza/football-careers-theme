@@ -117,7 +117,9 @@ if ( $deadline = get_post_meta( $post->ID, '_application_deadline', true ) ) {
 
 				<div class="job-content__details">
 					<h2 class="job-content__section-title">Job Role Details</h2>
-					<p class="job-content__start-date">Start Date: <?php echo date('F Y', strtotime($job_start_date) ) ?></p>
+					<?php if ( !empty($job_start_date) ): ?>
+						<p class="job-content__start-date">Start Date: <?php echo date('F Y', strtotime($job_start_date) ) ?></p>
+					<?php endif; ?>
 					
 					<?php if ( !empty($about_our_club) ): ?>
 						<h3 class="job-content__sub-section-title"><span class="section-title-icon"><img src="<?php echo get_template_directory_uri() ?>-child/src/img/yellow-arrow.svg" alt="yellow arrow icon" ></span>About Our Club</i></h3>
@@ -171,7 +173,7 @@ if ( $deadline = get_post_meta( $post->ID, '_application_deadline', true ) ) {
 				<?php applyJob($post); ?>
 			</div>
 			<div class="col-sm-4">
-				
+
 				<?php get_template_part('template-parts/featured', 'job') ?>
 
 				<div class="ad-box">
