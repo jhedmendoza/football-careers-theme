@@ -26,7 +26,7 @@ if ( $deadline = get_post_meta( $post->ID, '_application_deadline', true ) ) {
 
 ?>
 
-<div id="titlebar" class="photo-bg single " style="background: url(<?php echo $header_image ?>)">
+<div id="titlebar" class="photo-bg single" style="background: url(<?php echo $header_image ?>)">
 	<div class="container">
 		<div class="sixteen columns"></div>
 	</div>
@@ -34,7 +34,7 @@ if ( $deadline = get_post_meta( $post->ID, '_application_deadline', true ) ) {
 
 <div class="container">
 	<div class="company-logo">
-		<img src="<?php echo $company_logo ?>" alt="Company Name">
+		<img style="width:130px" src="<?php echo $company_logo ?>" alt="<?php the_company_name() ?>">
 	</div>
 </div>
 
