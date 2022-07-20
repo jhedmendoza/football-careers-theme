@@ -34,6 +34,7 @@ function custom_submit_job_form_fields( $fields ) {
   unset($fields['job']['rate_min']);
   unset($fields['job']['rate_max']);
   unset($fields['job']['salary_min']);
+  unset($fields['job']['job_region']);
 
   //rename fields based on the design
   $fields['job']['salary_max']['label'] = "Salary (£) / yr";
@@ -45,6 +46,29 @@ add_filter( 'submit_job_form_fields', 'custom_submit_job_form_fields' );
 
 
 /* Utility Functions */
+
+function applyJob($post) {
+  
+  if ( candidates_can_apply() ) {
+
+    $apply = get_the_job_application_method();
+
+    if ( !empty($apply) ) 
+    {
+      if ($apply->type == 'url') 
+        echo '<a class="button site-btn" target="_blank" href="' . esc_url($apply->url) . '">' . esc_html__('Apply for job', 'workscout') . '</a>';
+      else 
+        get_template_part('template-parts/job','application');
+    } 
+    else {
+      $apply = get_post_meta($post->ID, '_apply_link', true);
+      if ( !empty($apply) ) 
+        echo '<a class="button site-btn" target="_blank" href="' . esc_url($apply) . '">' . esc_html__('Apply for job', 'workscout') . '</a>';
+      
+    }
+  }
+}
+
 
 function get_job_tags($post){
   ob_start();

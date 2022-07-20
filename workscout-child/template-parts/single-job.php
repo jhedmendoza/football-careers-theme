@@ -7,17 +7,22 @@ $header_image     = apply_filters('workscout_single_job_header_image', $header_i
 
 $company_id       = get_post_meta($post->ID, '_company_id', true);
 $company_logo     = (get_the_company_logo( $company_id, 'thumbnail' )) ?  get_the_company_logo( $company_id, 'thumbnail' ) : apply_filters( 'job_manager_default_company_logo', JOB_MANAGER_PLUGIN_URL . '/assets/images/company.png' );
-$salary_per_year  = get_post_meta( $post->ID, '_salary_max', true );
-$location 		  = get_post_meta( $post->ID, '_job_location', true );
-$country 	      = get_post_meta( $post->ID, '_country', true );
-$application_email= get_post_meta( $post->ID, '_application', true );
-$job_requirements = get_post_meta( $post->ID, '_job_requirements', true );
+$salary_per_year  = get_post_meta( $post->ID, '_salary_max', true);
+$location 		  = get_post_meta( $post->ID, '_job_location', true);
+$country 	      = get_post_meta( $post->ID, '_country', true);
+$application_email= get_post_meta( $post->ID, '_application', true);
+$about_our_club   = get_post_meta( $post->ID, '_about_our_club', true);
+$the_position     = get_post_meta( $post->ID, '_the_position', true);
+$job_details      = get_post_meta( $post->ID, '_the_job_details', true);
+$job_requirements = get_post_meta( $post->ID, '_job_requirements', true);
+$job_start_date	  = get_post_meta( $post->ID, '_job_start_date', true);
 
 if ( $deadline = get_post_meta( $post->ID, '_application_deadline', true ) ) {
 	$expiring_days = apply_filters( 'job_manager_application_deadline_expiring_days', 2 );
 	$expiring = ( floor( ( time() - strtotime( $deadline ) ) / ( 60 * 60 * 24 ) ) >= $expiring_days );
 	$expired  = ( floor( ( time() - strtotime( $deadline ) ) / ( 60 * 60 * 24 ) ) >= 0 );
 }
+
 
 ?>
 
@@ -40,18 +45,22 @@ if ( $deadline = get_post_meta( $post->ID, '_application_deadline', true ) ) {
 				<div class="job-content__header">
 					<div class="d-flex">
 						<h2 class="job-content__company"><?php the_company_name();?></h2>
-						<span class="job-content__closing-date"><span class="job-content__closing-date-icon"><img src="<?php echo get_template_directory_uri() ?>-child/src/img/calendar.svg" alt="calendar icon" ></span> <?php echo ( $expired ? __( 'Closed', 'workscout' ) : __( 'Closing Date', 'workscout' ) ) .': ' . date(' jS F Y', strtotime($deadline))  ?></span>
+						<?php if ( !empty($deadline) ): ?>
+							<span class="job-content__closing-date"><span class="job-content__closing-date-icon"><img src="<?php echo get_template_directory_uri() ?>-child/src/img/calendar.svg" alt="calendar icon" ></span> 
+								<?php echo ( $expired ? __( 'Closed', 'workscout' ) : __( 'Closing Date', 'workscout' ) ) .': ' . date(' jS F Y', strtotime($deadline))  ?>
+							</span>
+						<?php endif; ?>
 					</div>
 					<div class="d-flex v-align-center">
 						<h1 class="job-content__title"><?php wp_strip_all_tags( the_title() ); ?></h1>
 						<span class="job-content__salary"><span class="job-content__salary-icon"><img src="<?php echo get_template_directory_uri() ?>-child/src/img/money.svg" alt="money icon" ></span>£<?php echo thousandsCurrencyFormat($salary_per_year) ?> <span class="job-content__note">Per Year</span></span>
 					</div>
 					<div class="d-flex">
-						<p class="job-content__address"><span class="job-content__location-pin"><img src="<?php echo get_template_directory_uri() ?>-child/src/img/location.svg" alt="money icon" ></span>Raleigh, North Carolina, United States of America (USA)</p>
+						<p class="job-content__address"><span class="job-content__location-pin"><img src="<?php echo get_template_directory_uri() ?>-child/src/img/location.svg" alt="money icon" ></span><?php echo $location.', '.$country ?></p>
 						<div class="job-content__social-share"></div>
 					</div>
 					<div class="d-flex">
-						<a href="#" class="site-btn">Apply for this Job</a>
+						<?php applyJob($post); ?>
 						<a href="#" class="site-btn bookmark-btn"><span class="site-btn__icon"><img src="<?php echo get_template_directory_uri() ?>-child/src/img/bookmark.svg" alt="bookmark icon" ></span>Add to bookmarks</a>
 					</div>
 					<div class="job-content__company-description">
@@ -93,35 +102,51 @@ if ( $deadline = get_post_meta( $post->ID, '_application_deadline', true ) ) {
 								<?php echo strip_tags(ws_get_job_types($post)); ?>
 							</div>
 						</div>
-						<div class="job-content__table-row">
-							<div class="job-content__table-label">
-								Closing Date
+						<?php if ( !empty($deadline) ): ?>
+							<div class="job-content__table-row">
+								<div class="job-content__table-label">
+									Closing Date
+								</div>
+								<div class="job-content__table-value">
+									Applications must be submitted by <?php echo date('l', strtotime($deadline)); ?>, <?php echo date(' jS F Y', strtotime($deadline)) ?> 
+								</div>
 							</div>
-							<div class="job-content__table-value">
-								Applications must be submitted by <?php echo date('l', strtotime($deadline)); ?>, <?php echo date(' jS F Y', strtotime($deadline)) ?> 
-							</div>
-						</div>
+						<?php endif; ?>
 					</div>
 				</div>
 
 				<div class="job-content__details">
 					<h2 class="job-content__section-title">Job Role Details</h2>
-					<p class="job-content__start-date">Start Date: July 2022</p>
+					<p class="job-content__start-date">Start Date: <?php echo date('F Y', strtotime($job_start_date) ) ?></p>
+					
+					<?php if ( !empty($about_our_club) ): ?>
+						<h3 class="job-content__sub-section-title"><span class="section-title-icon"><img src="<?php echo get_template_directory_uri() ?>-child/src/img/yellow-arrow.svg" alt="yellow arrow icon" ></span>About Our Club</i></h3>
+						<?php $about = explode(PHP_EOL, $about_our_club); ?>
+						<?php foreach ($about as $b): ?>
+							<p><?php echo $b ?></p>
+						<?php endforeach; ?>
+					<?php endif; ?>
+					
+					<?php if ( !empty($the_position) ): ?>
+						<h3 class="job-content__sub-section-title"><span class="section-title-icon"><img src="<?php echo get_template_directory_uri() ?>-child/src/img/yellow-arrow.svg" alt="yellow arrow icon" ></span>The Position</i></h3>
+						<?php $position = explode(PHP_EOL, $the_position); ?>
+						<?php foreach ($position as $p): ?>
+							<p><?php echo $p ?></p>
+						<?php endforeach; ?>
+					<?php endif; ?>
 
-					<h3 class="job-content__sub-section-title"><span class="section-title-icon"><img src="<?php echo get_template_directory_uri() ?>-child/src/img/yellow-arrow.svg" alt="yellow arrow icon" ></span>About Our Club</i></h3>
-					<p>Carolina Velocity is the fastest growing youth soccer club in the Triangle, North Carolina. Carolina Velocity FC offers a unique soccer pathway for players in North Carolina. Full time professional coaches will work closely to our detailed syllabus to allow for a strategic platform focusing on producing technically astute and tactically aware soccer players.</p>
-
-					<h3 class="job-content__sub-section-title"><span class="section-title-icon"><img src="<?php echo get_template_directory_uri() ?>-child/src/img/yellow-arrow.svg" alt="yellow arrow icon" ></span>The Position</i></h3>
-					<p>The Carolina Velocity FC Youth Academy Coaching role is a full-time position. The successful candidate will be an integral part of the Carolina Velocity FC soccer staff, focusing on all aspects of the club and coaching philosophy.</p><p>They will be responsible for overseeing the development phase, coaching, and administrative duties within the teams/program. The ideal candidate is a professional, passionate, and enthusiastic coach that will focus on creating a positive learning environment and a desire to learn and grow professionally. They report directly to the Director of Soccer.</p>
-
-					<h3 class="job-content__sub-section-title"><span class="section-title-icon"><img src="<?php echo get_template_directory_uri() ?>-child/src/img/yellow-arrow.svg" alt="yellow arrow icon" ></span>The Job Details</i></h3>
-					<p><strong>Role and Responsibilities</strong></p>
-					<ul class="job-content__list">
-						<li>Head Coach Carolina Velocity FC teams, growing the professional competitive soccer environment</li>
-						<li>Head Coach Carolina Velocity FC teams, growing the professional competitive soccer environment</li>
-						<li>Head Coach Carolina Velocity FC teams, growing the professional competitive soccer environment</li>
-						<li>Head Coach Carolina Velocity FC teams, growing the professional competitive soccer environment</li>
+					<?php if ( !empty($job_details) ): ?>
+						<h3 class="job-content__sub-section-title"><span class="section-title-icon"><img src="<?php echo get_template_directory_uri() ?>-child/src/img/yellow-arrow.svg" alt="yellow arrow icon" ></span>The Job Details</i></h3>
+						<p><strong>Role and Responsibilities</strong></p>
+						<ul class="job-content__list">
+						<?php $details = explode(PHP_EOL, $job_details); ?>
+						<?php foreach ($details as $detail): ?>
+							<li><?php echo $detail ?></li>
+						<?php endforeach; ?>
 					</ul>
+					<?php endif; ?>
+
+
 				</div>
 				<div class="job-content__requirements">
 					<?php if ( !empty($job_requirements) ): ?>
@@ -143,38 +168,11 @@ if ( $deadline = get_post_meta( $post->ID, '_application_deadline', true ) ) {
 						</div>
 					</div>
 				</div>
-				<a href="#" class="site-btn">Apply for this Job</a>
+				<?php applyJob($post); ?>
 			</div>
 			<div class="col-sm-4">
-				<div class="featured-job">
-					<div class="featured-job__label">Featured Job</div>
-					<div class="featured-job__box">
-						<div class="featured-job__header">
-							<div class="featured-job__logo">
-								<img src="https://dev-football.hybridanchor.com/wp-content/uploads/2022/06/job-board-nonres-user-img1.png" alt="Company Name">
-							</div>
-							<div class="featured-job__title">
-								<h3>WYNT HEAD COACH (U-16)</h3>
-								<p>US Soccer</p>
-							</div>
-							<a class="featured-job__bookmark">
-								<img src="<?php echo get_template_directory_uri() ?>-child/src/img/bookmark.svg" alt="bookmark icon" >
-							</a>
-						</div>
-						<div class="featured-job__body">
-							<p>Reporting directly to the WNT General Manager and the WYNT Head Coach will be responsible for educating, equipping, and developing our top talents through age-appropriate, skill-building approaches with the goal of grooming players to play for our Senior National Teams. This role requires...</p>
-							<ul class="featured-job__tags">
-								<li><a href="#">Full time</a></li>
-								<li><a href="#">Permanent</a></li>
-								<li><a href="#">Staff</a></li>
-							</ul>
-						</div>
-						<div class="featured-job__footer">
-							<span class="featured-job__salary"><span class="featured-job__salary-icon"><img src="<?php echo get_template_directory_uri() ?>-child/src/img/money.svg" alt="money icon" ></span>£150K <span class="job-content__note">/Per Year</span></span>
-							<a href="#" class="site-btn">Apply for this Job</a>
-						</div>
-					</div>
-				</div>
+				
+				<?php get_template_part('template-parts/featured', 'job') ?>
 
 				<div class="ad-box">
 					<div class="ad-box__item">

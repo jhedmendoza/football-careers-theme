@@ -1,9 +1,16 @@
 <?php
 
+$fields['job']['country'] = array(
+  'label'       => __( 'Country', 'job_manager' ),
+  'type'        => 'text',
+  'required'    => true,
+  'placeholder' => '',
+  'priority'    => 3
+);
+
 $fields['job']['career_experience'] = array(
   'label'       => __( 'Career Level', 'job_manager' ),
   'type'        => 'text',
-  // 'required'    => true,
   'placeholder' => 'Example: Head Coach',
   'priority'    => 13
 );
@@ -15,10 +22,9 @@ $fields['job']['career_level'] = array(
   'priority'    => 14
 );
 
-$fields['job']['career_industry'] = array(
-  'label'       => __( 'Industry', 'job_manager' ),
-  'type'        => 'text',
-  'placeholder' => 'Example: Staff',
+$fields['job']['job_start_date'] = array(
+  'label'       => __( 'Start Date', 'job_manager' ),
+  'type'        => 'date',
   'priority'    => 15
 );
 
@@ -31,61 +37,72 @@ $fields['job']['career_qualifications'] = array(
 
 /*****************************************************************/
 
-$fields['job']['job_requirements'] = array(
-  'label'       => __( 'Requirements', 'job_manager' ),
+$fields['job']['about_our_club'] = array(
+  'label'       => __( 'About Our Club', 'job_manager' ),
   'type'        => 'textarea',
-  'priority'    => 17
-);
-
-$fields['job']['job_additional_info'] = array(
-  'label'       => __( 'Additional Info', 'job_manager' ),
-  'type'        => 'textarea',
+  'description' => 'Separate values by new line.',
   'priority'    => 18
 );
 
-/*****************************************************************/
-
-$fields['job']['country'] = array(
-  'label'       => __( 'Country', 'job_manager' ),
-  'type'        => 'text',
-  'required'    => true,
-  'placeholder' => '',
+$fields['job']['the_position'] = array(
+  'label'       => __( 'The Position', 'job_manager' ),
+  'type'        => 'textarea',
+  'description' => 'Separate values by new line.',
   'priority'    => 19
 );
 
-$fields['job']['postal_code'] = array(
-  'label'       => __( 'Postal Code', 'job_manager' ),
-  'type'        => 'text',
+$fields['job']['the_job_details'] = array(
+  'label'       => __( 'Job Details', 'job_manager' ),
+  'type'        => 'textarea',
+  'description' => 'Separate values by new line.',
   'priority'    => 20
 );
 
-$fields['job']['full_address'] = array(
-  'label'       => __( 'Full Address', 'job_manager' ),
-  'type'        => 'text',
-  'placeholder' => '',
+$fields['job']['job_requirements'] = array(
+  'label'       => __( 'Requirements', 'job_manager' ),
+  'type'        => 'textarea',
+  'description' => 'Separate values by new line.',
   'priority'    => 21
 );
 
-$fields['job']['latitude'] = array(
-  'label'       => __( 'Latitude', 'job_manager' ),
-  'type'        => 'text',
-  'placeholder' => '',
-  'priority'    => 22
-);
 
-$fields['job']['longtitude'] = array(
-  'label'       => __( 'Longtitude', 'job_manager' ),
-  'type'        => 'text',
-  'placeholder' => '',
-  'priority'    => 23
-);
+/*****************************************************************/
 
-$fields['job']['zoom'] = array(
-  'label'       => __( 'Zoom', 'job_manager' ),
-  'type'        => 'text',
-  'placeholder' => '',
-  'priority'    => 24
-);
+
+
+// $fields['job']['postal_code'] = array(
+//   'label'       => __( 'Postal Code', 'job_manager' ),
+//   'type'        => 'text',
+//   'priority'    => 20
+// );
+
+// $fields['job']['full_address'] = array(
+//   'label'       => __( 'Full Address', 'job_manager' ),
+//   'type'        => 'text',
+//   'placeholder' => '',
+//   'priority'    => 21
+// );
+
+// $fields['job']['latitude'] = array(
+//   'label'       => __( 'Latitude', 'job_manager' ),
+//   'type'        => 'text',
+//   'placeholder' => '',
+//   'priority'    => 22
+// );
+
+// $fields['job']['longtitude'] = array(
+//   'label'       => __( 'Longtitude', 'job_manager' ),
+//   'type'        => 'text',
+//   'placeholder' => '',
+//   'priority'    => 23
+// );
+
+// $fields['job']['zoom'] = array(
+//   'label'       => __( 'Zoom', 'job_manager' ),
+//   'type'        => 'text',
+//   'placeholder' => '',
+//   'priority'    => 24
+// );
 
 
 return $fields;
