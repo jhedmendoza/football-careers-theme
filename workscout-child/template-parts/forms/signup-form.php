@@ -16,6 +16,13 @@
       <input type="text" name="signup_email_address" id="signup-email-address" />
     </div>
     <div class="col">
+      <label for="signup_username">Username <span class="required">*</span></label>
+      <input type="text" name="signup_username" id="signup-username" />
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
       <label for="signup_password">Password <span class="required">*</span></label>
       <input type="password" name="signup_password" id="signup-password" />
     </div>
